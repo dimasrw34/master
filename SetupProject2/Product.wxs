@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define Finance_TargetDir=$(var.Finance.TargetDir)?><?define TestDB_TargetDir=$(var.TestDB.TargetDir)?><?define XFace_TargetDir=$(var.XFace.TargetDir)?>
+	<Product Id="*" Name="SetupProject2" Language="1033" Version="1.0.0.0" Manufacturer="333" UpgradeCode="74291d33-d07c-4b9b-9435-34808e2aed66">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of QQQQQQQQQQQ is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="SetupProject2" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="ProgramFilesFolder_files" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SetupProject2" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+		</ComponentGroup>
+	</Fragment>
+	<Fragment>
+	  <ComponentGroup Id="ProgramFilesFolder_files" Directory="ProgramFilesFolder">
+	    <Component Id="Finance.exe" Guid="15f7c97f-111b-489a-be28-520daf6c93b3">
+	      <File Id="Finance.exe" Name="Finance.exe" Source="$(var.Finance_TargetDir)Finance.exe" />
+	    </Component>
+	    <Component Id="Finance.exe.config" Guid="d5e7bd19-e0a7-47a8-bd19-b06fc1edbd37">
+	      <File Id="Finance.exe.config" Name="Finance.exe.config" Source="$(var.Finance_TargetDir)Finance.exe.config" />
+	    </Component>
+	    <Component Id="TestDB.exe" Guid="331edaa3-75a7-460f-9906-4794c8806561">
+	      <File Id="TestDB.exe" Name="TestDB.exe" Source="$(var.TestDB_TargetDir)TestDB.exe" />
+	    </Component>
+	    <Component Id="TestDB.exe.config" Guid="9646fcbf-8462-48dd-a526-4370de6b7212">
+	      <File Id="TestDB.exe.config" Name="TestDB.exe.config" Source="$(var.TestDB_TargetDir)TestDB.exe.config" />
+	    </Component>
+	   
+	    <Component Id="XFace.exe" Guid="da5eb824-7d9a-41d3-a7de-cad783d720e2">
+	      <File Id="XFace.exe" Name="XFace.exe" Source="$(var.XFace_TargetDir)XFace.exe" />
+	    </Component>
+	    <Component Id="XFace.exe.config" Guid="41fde7cf-0085-47d1-b62e-593949bf106a">
+	      <File Id="XFace.exe.config" Name="XFace.exe.config" Source="$(var.XFace_TargetDir)XFace.exe.config" />
+	    </Component>
+	    <Component Id="ClosedXML.dll" Guid="c505207c-c336-4c16-a27c-ab750ed1f350">
+	      <File Id="ClosedXML.dll" Name="ClosedXML.dll" Source="$(var.XFace_TargetDir)ClosedXML.dll" />
+	    </Component>
+	    <Component Id="DocumentFormat.OpenXml.dll" Guid="e579e053-07a4-4060-b593-36afc555ac70">
+	      <File Id="DocumentFormat.OpenXml.dll" Name="DocumentFormat.OpenXml.dll" Source="$(var.XFace_TargetDir)DocumentFormat.OpenXml.dll" />
+	    </Component>
+	    <Component Id="ExcelNumberFormat.dll" Guid="b55b7fdf-beb9-4286-b13d-8dfc5679a4ab">
+	      <File Id="ExcelNumberFormat.dll" Name="ExcelNumberFormat.dll" Source="$(var.XFace_TargetDir)ExcelNumberFormat.dll" />
+	    </Component>
+	    <Component Id="FastMember.Signed.dll" Guid="3216d7cf-0746-4e34-b6b1-3b42ef78c735">
+	      <File Id="FastMember.Signed.dll" Name="FastMember.Signed.dll" Source="$(var.XFace_TargetDir)FastMember.Signed.dll" />
+	    </Component>
+	    <Component Id="FlashControlV71.dll" Guid="4d677b88-029b-4749-8843-a08a7620a593">
+	      <File Id="FlashControlV71.dll" Name="FlashControlV71.dll" Source="$(var.XFace_TargetDir)FlashControlV71.dll" />
+	    </Component>
+	    <Component Id="log4net.dll" Guid="6ae3bf4a-dc1c-45d1-9ede-c4e9910d8993">
+	      <File Id="log4net.dll" Name="log4net.dll" Source="$(var.XFace_TargetDir)log4net.dll" />
+	    </Component>
+	    <Component Id="MetroFramework.dll" Guid="d7570534-27d7-46b7-9c31-730e17632bc8">
+	      <File Id="MetroFramework.dll" Name="MetroFramework.dll" Source="$(var.XFace_TargetDir)MetroFramework.dll" />
+	    </Component>
+	    <Component Id="MetroFramework.Design.dll" Guid="6f573fdb-ca39-4112-aae4-0396c21043cb">
+	      <File Id="MetroFramework.Design.dll" Name="MetroFramework.Design.dll" Source="$(var.XFace_TargetDir)MetroFramework.Design.dll" />
+	    </Component>
+	    <Component Id="MetroFramework.Fonts.dll" Guid="1837c680-6a5d-48ef-9bfa-5a39290d698d">
+	      <File Id="MetroFramework.Fonts.dll" Name="MetroFramework.Fonts.dll" Source="$(var.XFace_TargetDir)MetroFramework.Fonts.dll" />
+	    </Component>
+	    <Component Id="System.AppContext.dll" Guid="ac54380e-484e-4c04-9a16-e6c5ef44a71f">
+	      <File Id="System.AppContext.dll" Name="System.AppContext.dll" Source="$(var.XFace_TargetDir)System.AppContext.dll" />
+	    </Component>
+	    <Component Id="System.Diagnostics.DiagnosticSource.dll" Guid="a54eb014-f2df-49b8-8a0b-1a0cc964c4bf">
+	      <File Id="System.Diagnostics.DiagnosticSource.dll" Name="System.Diagnostics.DiagnosticSource.dll" Source="$(var.XFace_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
+	    </Component>
+	    <Component Id="System.Globalization.Calendars.dll" Guid="cf7f8811-0710-4095-88fb-59a7a2dadb7b">
+	      <File Id="System.Globalization.Calendars.dll" Name="System.Globalization.Calendars.dll" Source="$(var.XFace_TargetDir)System.Globalization.Calendars.dll" />
+	    </Component>
+	    <Component Id="System.IO.Compression.ZipFile.dll" Guid="e483c35a-d560-48d9-96aa-5f925e0c70f8">
+	      <File Id="System.IO.Compression.ZipFile.dll" Name="System.IO.Compression.ZipFile.dll" Source="$(var.XFace_TargetDir)System.IO.Compression.ZipFile.dll" />
+	    </Component>
+	    <Component Id="System.IO.FileSystem.dll" Guid="5763c7c4-3f39-44d1-bbfe-61ca8025ed64">
+	      <File Id="System.IO.FileSystem.dll" Name="System.IO.FileSystem.dll" Source="$(var.XFace_TargetDir)System.IO.FileSystem.dll" />
+	    </Component>
+	    <Component Id="System.IO.Packaging.dll" Guid="671b7d6c-2dbd-48cf-a1b0-3d81fec6417e">
+	      <File Id="System.IO.Packaging.dll" Name="System.IO.Packaging.dll" Source="$(var.XFace_TargetDir)System.IO.Packaging.dll" />
+	    </Component>
+	    <Component Id="System.Net.Http.dll" Guid="0b5c3afc-c7aa-4cb4-b3d8-6ebca01d766c">
+	      <File Id="System.Net.Http.dll" Name="System.Net.Http.dll" Source="$(var.XFace_TargetDir)System.Net.Http.dll" />
+	    </Component>
+	    <Component Id="System.Runtime.InteropServices.RuntimeInformation.dll" Guid="9f3a95f2-8076-4ebf-9319-1a528f2254f6">
+	      <File Id="System.Runtime.InteropServices.RuntimeInformation.dll" Name="System.Runtime.InteropServices.RuntimeInformation.dll" Source="$(var.XFace_TargetDir)System.Runtime.InteropServices.RuntimeInformation.dll" />
+	    </Component>
+	    <Component Id="System.Security.Cryptography.Algorithms.dll" Guid="0b8fa831-048c-4ef4-922f-9bb088cf7e9a">
+	      <File Id="System.Security.Cryptography.Algorithms.dll" Name="System.Security.Cryptography.Algorithms.dll" Source="$(var.XFace_TargetDir)System.Security.Cryptography.Algorithms.dll" />
+	    </Component>
+	    <Component Id="System.Security.Cryptography.Encoding.dll" Guid="8f375f97-b256-48b0-84be-d28a00e4037e">
+	      <File Id="System.Security.Cryptography.Encoding.dll" Name="System.Security.Cryptography.Encoding.dll" Source="$(var.XFace_TargetDir)System.Security.Cryptography.Encoding.dll" />
+	    </Component>
+	    <Component Id="System.Security.Cryptography.Primitives.dll" Guid="8bc097f6-2a5b-40aa-8a7c-a62ddb48b861">
+	      <File Id="System.Security.Cryptography.Primitives.dll" Name="System.Security.Cryptography.Primitives.dll" Source="$(var.XFace_TargetDir)System.Security.Cryptography.Primitives.dll" />
+	    </Component>
+	    <Component Id="Z80NavBarControl.dll" Guid="ff06df4b-8e03-4af0-a0ff-a550d0359d9a">
+	      <File Id="Z80NavBarControl.dll" Name="Z80NavBarControl.dll" Source="$(var.XFace_TargetDir)Z80NavBarControl.dll" />
+	    </Component>
+	    <Component Id="System.Security.Cryptography.X509Certificates.dll" Guid="d3c7281d-af22-410b-8c6c-9e6417c10785">
+	      <File Id="System.Security.Cryptography.X509Certificates.dll" Name="System.Security.Cryptography.X509Certificates.dll" Source="$(var.XFace_TargetDir)System.Security.Cryptography.X509Certificates.dll" />
+	    </Component>
+	    <Component Id="System.Xml.ReaderWriter.dll" Guid="8463a8ff-2b5d-4e25-b0d6-76e9231407b3">
+	      <File Id="System.Xml.ReaderWriter.dll" Name="System.Xml.ReaderWriter.dll" Source="$(var.XFace_TargetDir)System.Xml.ReaderWriter.dll" />
+	    </Component>
+	    <Component Id="System.Net.Sockets.dll" Guid="f25e561d-e5fe-4a74-91f0-fe1f8fc53e4f">
+	      <File Id="System.Net.Sockets.dll" Name="System.Net.Sockets.dll" Source="$(var.XFace_TargetDir)System.Net.Sockets.dll" />
+	    </Component>
+	    <Component Id="System.IO.FileSystem.Primitives.dll" Guid="363952d9-8161-4f34-909e-303daf58a7c6">
+	      <File Id="System.IO.FileSystem.Primitives.dll" Name="System.IO.FileSystem.Primitives.dll" Source="$(var.XFace_TargetDir)System.IO.FileSystem.Primitives.dll" />
+	    </Component>
+	    <Component Id="Microsoft.Win32.Primitives.dll" Guid="71b3200d-82d3-4741-91f9-fff51888b5e6">
+	      <File Id="Microsoft.Win32.Primitives.dll" Name="Microsoft.Win32.Primitives.dll" Source="$(var.XFace_TargetDir)Microsoft.Win32.Primitives.dll" />
+	    </Component>
+	    <Component Id="System.IO.Compression.dll" Guid="1b328182-ea09-42d0-8c7a-caaba5beec88">
+	      <File Id="System.IO.Compression.dll" Name="System.IO.Compression.dll" Source="$(var.XFace_TargetDir)System.IO.Compression.dll" />
+	    </Component>
+	    <Component Id="System.Console.dll" Guid="6f6a63ce-fab8-4cc6-91ee-24799981160e">
+	      <File Id="System.Console.dll" Name="System.Console.dll" Source="$(var.XFace_TargetDir)System.Console.dll" />
+	    </Component>
+	    <Component Id="XFace.pdb" Guid="de8588d4-cc3d-4d8d-ac28-27a9aa416d2d">
+	      <File Id="XFace.pdb" Name="XFace.pdb" Source="$(var.XFace_TargetDir)XFace.pdb" />
+	    </Component>
+	    <Component Id="TestDB.pdb" Guid="f62e1774-c638-4d89-98eb-229c6691e0dc">
+	      <File Id="TestDB.pdb" Name="TestDB.pdb" Source="$(var.TestDB_TargetDir)TestDB.pdb" />
+	    </Component>
+	    <Component Id="Finance.pdb" Guid="48229d8b-d849-4fa6-898c-1295d3a83d31">
+	      <File Id="Finance.pdb" Name="Finance.pdb" Source="$(var.Finance_TargetDir)Finance.pdb" />
+	    </Component>
+	  </ComponentGroup>
+	</Fragment>
+</Wix>
