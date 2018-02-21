@@ -4,6 +4,9 @@ using Z80NavBarControl.Z80NavBar;
 using Z80NavBarControl.Z80NavBar.Themes;
 using MetroFramework.Forms;
 using XFace.PanelBuilders;
+using DataLayer;
+using BusinessLayer;
+using DataLayer.Data;
 
 namespace XFace
 {
@@ -79,7 +82,30 @@ namespace XFace
             absrtactBuilder = new BuiderPanelAndOneGrid();
 
             this.tabPage4.Controls.Add(absrtactBuilder.BuildMetroPanel());
-            absrtactBuilder.AddColums(4);
+            absrtactBuilder.AddColums(3);
+
+            UnitDataInterrop udi = new UnitDataInterrop();
+
+            List<Unit> listUnit= udi.GetUnits();
+
+            int i = 0;
+            foreach (Unit un in listUnit)
+            {
+                
+                absrtactBuilder.MetroCurrGrid.Rows.Add();
+                absrtactBuilder.MetroCurrGrid.Rows[i].Cells[0].Value = un.Id;
+                absrtactBuilder.MetroCurrGrid.Rows[i].Cells[1].Value = un.FullName;
+                absrtactBuilder.MetroCurrGrid.Rows[i].Cells[2].Value = un.ShortName;
+                i += 1;
+            }
+
+           // absrtactBuilder.MetroCurrGrid.Rows.Add();
+          //  absrtactBuilder.MetroCurrGrid.Rows.Add();
+          //absrtactBuilder.MetroCurrGrid.Rows.Add();
+            //absrtactBuilder.MetroCurrGrid.Rows[0].Cells[0].Value = "Строка номер 1";
+            //absrtactBuilder.MetroCurrGrid.Rows[1].Cells[0].Value = "Строка номер 2";
+            //absrtactBuilder.MetroCurrGrid.Rows[2].Cells[0].Value = "Строка номер 3";
+            //absrtactBuilder.MetroCurrGrid.Rows[1].Cells[4].Value = true;
             metroButton4.Select();
         }
 

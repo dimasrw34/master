@@ -16,12 +16,12 @@ namespace XFace
     {
         private MetroPanel metroPanel;
         private MetroGrid metroGrid;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        //System.Windows.Forms.DataGridViewTextBoxColumn Column6;
 
         DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -189,23 +189,29 @@ namespace XFace
                 metroGrid.Columns[i].HeaderText= "Column" + i.ToString();
                 metroGrid.Columns[i].ReadOnly = true;
             }
-            metroGrid.Columns.Add( new DataGridViewCheckBoxColumn());
-            metroGrid.Columns[columns].Name = "Column" + columns.ToString();
-            metroGrid.Columns[columns].HeaderText = "Column" + columns.ToString();
-            metroGrid.Columns[columns].ReadOnly = false;
+            //metroGrid.Columns.Add( new DataGridViewCheckBoxColumn());
+            //metroGrid.Columns[columns].Name = "Column" + columns.ToString();
+            //metroGrid.Columns[columns].HeaderText = "Column" + columns.ToString();
+            //metroGrid.Columns[columns].ReadOnly = false;
 
             // metroGrid.DefaultCellStyle = dataGridViewCellStyle2;
             //// MessageBox.Show(columnRange[2].Name.ToString(),"",MessageBoxButtons.OK);
             // metroGrid.Columns.AddRange(columnRange);
 
-            metroGrid.Rows.Add();
-            metroGrid.Rows.Add();
-            metroGrid.Rows.Add();
-            metroGrid.Rows[0].Cells[0].Value = "Строка номер 1";
-            metroGrid.Rows[1].Cells[0].Value = "Строка номер 2";
-            metroGrid.Rows[2].Cells[0].Value = "Строка номер 3";
-            metroGrid.Rows[1].Cells[4].Value = true;
+            //metroGrid.Rows.Add();
+            //metroGrid.Rows.Add();
+            //metroGrid.Rows.Add();
+            //metroGrid.Rows[0].Cells[0].Value = "Строка номер 1";
+            //metroGrid.Rows[1].Cells[0].Value = "Строка номер 2";
+            //metroGrid.Rows[2].Cells[0].Value = "Строка номер 3";
+            //metroGrid.Rows[1].Cells[4].Value = true;
 
+        }
+
+        public override MetroGrid MetroCurrGrid
+        {
+            get { return metroGrid; }
+            
         }
 
         public override void Dispose()

@@ -8,6 +8,7 @@ namespace XFace.PanelBuilders
     {
         //public abstract void BuildCaption();
         //public abstract void BuildGrid();
+        public abstract MetroGrid MetroCurrGrid { get; }
         public abstract void AddColums(int columns);
         public abstract void Dispose();
         public abstract MetroPanel BuildMetroPanel();
