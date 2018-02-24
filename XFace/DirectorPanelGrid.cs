@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace XFace
     {
         private readonly AbsrtactPanelBuilder _absrtactPanelBuilder;
 
+
         public DirectorPanelGrid(AbsrtactPanelBuilder absrtactPanelBuilder)
         {
             this._absrtactPanelBuilder = absrtactPanelBuilder;
@@ -18,8 +20,8 @@ namespace XFace
 
         public void Construct()
         {
-            _absrtactPanelBuilder.BuildMetroPanel();
-        }
+           _absrtactPanelBuilder.BuildMetroPanel();
 
+        }
     }
 }

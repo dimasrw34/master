@@ -10,6 +10,15 @@ namespace XFace.PanelBuilders
         public abstract MetroGrid MetroCurrGrid { get; }
         public abstract void AddColums(int columns);
         public abstract void Dispose();
-        public abstract MetroPanel BuildMetroPanel();
+
+        // строим панель и грид
+        public abstract  void BuildMetroPanel();
+
+        //возвращаем готовую панель с гридом
+        public abstract MetroPanel GetMetroPanel();
+
+   
+
+
     }
 }

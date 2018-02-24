@@ -76,6 +76,7 @@
     <Compile Include="PanelBuilders\AbsrtactPanelBuilder.cs" />
     <Compile Include="PanelBuilders\BuiderPanelAndOneGrid.cs" />
     <Compile Include="Presentors\PresentorMain.cs" />
+    <Compile Include="Presentors\PresentorUnit.cs" />
     <Compile Include="Views\MetroViewMain.cs">
       <SubType>Form</SubType>
     </Compile>
