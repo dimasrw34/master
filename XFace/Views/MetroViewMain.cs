@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using Z80NavBarControl.Z80NavBar;
 using Z80NavBarControl.Z80NavBar.Themes;
 using MetroFramework.Forms;
 using XFace.PanelBuilders;
-using DataLayer;
 using BusinessLayer;
 using DataLayer.Data;
 
-namespace XFace
+namespace XFace.Views
 {
-    public partial class Form1 : MetroForm
+    public partial class MetroViewMain : MetroForm
     {
         private NavBarItem nvBarItem = new NavBarItem();
         AbsrtactPanelBuilder absrtactBuilder;
 
-        public Form1()
+        public MetroViewMain()
         {
             InitializeComponent();
 
@@ -83,13 +83,13 @@ namespace XFace
 
             this.tabPage4.Controls.Add(absrtactBuilder.BuildMetroPanel());
             absrtactBuilder.AddColums(3);
-
+            absrtactBuilder.MetroCurrGrid.Columns[0].Visible = false;
             UnitDataInterrop udi = new UnitDataInterrop();
 
-            List<Unit> listUnit= udi.GetUnits();
+            ObservableCollection<Unit> ocUnit= udi.GetUnits();
 
             int i = 0;
-            foreach (Unit un in listUnit)
+            foreach (Unit un in ocUnit)
             {
                 
                 absrtactBuilder.MetroCurrGrid.Rows.Add();

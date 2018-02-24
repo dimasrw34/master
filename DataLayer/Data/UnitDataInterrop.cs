@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,25 @@ namespace DataLayer.Data
     public class UnitDataInterrop
     {
 
-        public List<Unit> GetUnits()
+        //заполняет справочник (коллекцию) единиц измерения  из БД и возвращает его
+        public ObservableCollection<Unit> GetUnits()
         {
-            List<Unit> unitList;
+            ObservableCollection<Unit> unitList;
 
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    unitList = (List < Unit > )session.QueryOver<Unit>().List();
-
+                    var tmpList = session.QueryOver<Unit>().List();
+                 
                     transaction.Commit();
+
+                    unitList = new ObservableCollection<Unit>();
+
+                    foreach (Unit un  in tmpList)
+                    {
+                        unitList.Add(un);
+                    }
                 }
             }
 

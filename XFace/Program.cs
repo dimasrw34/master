@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using XFace.Presentors;
+using XFace.Views;
+
 
 namespace XFace
 {
@@ -16,7 +16,11 @@ namespace XFace
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new MetroViewMain());
+        
+            var presentor = new PresentorMain(new MetroViewMain());
+            presentor.ShowView();
+            //Application.Run();
         }
     }
 }

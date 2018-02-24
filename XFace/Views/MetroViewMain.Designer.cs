@@ -1,6 +1,6 @@
-﻿namespace XFace
+﻿namespace XFace.Views
 {
-    partial class Form1
+    partial class MetroViewMain
     {
         /// <summary>
         /// Обязательная переменная конструктора.

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
+    //Единица измерения
     public class Unit
     {
-        public virtual int Id { get; set; }
-        public virtual string FullName { get; set; }
-        public virtual string ShortName { get; set; }
+        public virtual int Id { get; set; } //ид единицы измерения
+        public virtual string FullName { get; set; } //Полное наименование единицы измерения
+        public virtual string ShortName { get; set; } //Сокращенное наименование единицы измерения
     }
 }

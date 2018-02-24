@@ -10,6 +10,7 @@ namespace DataLayer.DataMapping
 {
     class UnitMap:ClassMap<Unit>
     {
+        //сопоставляет поля БД и бизнес-объекта (единица измерения)
         public UnitMap()
         {
             Id(x => x.Id).Column("UnitsID");
