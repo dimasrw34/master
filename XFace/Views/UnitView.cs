@@ -15,6 +15,7 @@ namespace XFace.Views
 
     {
         public event EventHandler ButtonOkClicked = null;
+       
 
         public UnitView()
         {
@@ -34,7 +35,7 @@ namespace XFace.Views
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            ButtonOkClicked.Invoke(sender,e);
+            ButtonOkClicked(sender,e);
         }
 
         public string TextBoxUnitName
@@ -54,5 +55,6 @@ namespace XFace.Views
             set { this.lblCaption.Text = value; }
         }
 
+   
     }
 }

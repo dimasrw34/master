@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\microsoft_excel_u.png" />
     <None Include="Resources\ic_delete_sweep_white_36dp.png" />
     <None Include="Resources\ic_create_white_36dp.png" />
     <None Include="Resources\ic_add_white_36dp.png" />

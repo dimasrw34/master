@@ -23,6 +23,8 @@ namespace XFace.Views
         public event EventHandler AddButtonClicked = null;
         public event EventHandler EditButtonClicked = null;
         public event EventHandler DeleteButtonClicked = null;
+
+        public event EventHandler ExcelButtonClicked = null;
       
 
 
@@ -104,17 +106,45 @@ namespace XFace.Views
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            AddButtonClicked.Invoke(sender,e);   
+            AddButtonClicked(sender,e);   
         }
 
         private void btnEdit_Click(object sender, System.EventArgs e)
         {
-            EditButtonClicked.Invoke(sender,e);
+            EditButtonClicked(sender,e);
         }
 
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
-            DeleteButtonClicked.Invoke(sender,e);
+            DeleteButtonClicked(sender,e);
+        }
+
+        private void btnXLS_Click(object sender, EventArgs e)
+        {
+            ExcelButtonClicked(sender, e);
+        }
+
+        private void MetroViewMain_Load(object sender, EventArgs e)
+        {
+            //this.KeyDown+=MetroViewMain_KeyDown;
+        }
+
+        private void MetroViewMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show(e.KeyCode.ToString());
+            if (e.KeyCode == Keys.F2)
+            {
+                MessageBox.Show("F2");
+                btnEdit_Click(sender,e);
+            }
+            else if (e.KeyCode == Keys.F4)
+            {
+                btnAdd_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F8)
+            {
+                btnEdit_Click(sender,e);
+            }
         }
     }
     

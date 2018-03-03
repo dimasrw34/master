@@ -44,6 +44,7 @@
             this.btnOK.Size = new System.Drawing.Size(118, 24);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "ОК";
+            this.btnOK.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnOK.UseSelectable = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -63,7 +64,7 @@
             // 
             // 
             this.tbUnitName.CustomButton.Image = null;
-            this.tbUnitName.CustomButton.Location = new System.Drawing.Point(686, 1);
+            this.tbUnitName.CustomButton.Location = new System.Drawing.Point(655, 1);
             this.tbUnitName.CustomButton.Name = "";
             this.tbUnitName.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.tbUnitName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -105,7 +106,7 @@
             // 
             // 
             this.tbUnitShortName.CustomButton.Image = null;
-            this.tbUnitShortName.CustomButton.Location = new System.Drawing.Point(290, 1);
+            this.tbUnitShortName.CustomButton.Location = new System.Drawing.Point(259, 1);
             this.tbUnitShortName.CustomButton.Name = "";
             this.tbUnitShortName.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.tbUnitShortName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -151,8 +152,10 @@
             // 
             // UnitView
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(849, 149);
             this.ControlBox = false;
             this.Controls.Add(this.lblUnitShortName);

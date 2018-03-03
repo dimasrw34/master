@@ -140,8 +140,6 @@ namespace XFace.Presentors
             _viewUnit.ShowDialog();
         }
 
-        
-
         //сохраняет редактирование данных текущей строки
         private void EditCurrentCell(object sender, EventArgs e)
         {
@@ -208,5 +206,9 @@ namespace XFace.Presentors
            metroGrid.Rows.RemoveAt(metroGrid.CurrentCell.RowIndex);
         }
 
+        public void ExcelLoad(object sender, EventArgs e)
+        {
+            MessageBox.Show("Excel Load");
+        }
     }
 }

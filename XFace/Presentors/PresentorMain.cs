@@ -18,16 +18,23 @@ namespace XFace.Presentors
         public event EventHandler EditButtomHandlerMPresentor = null;
         public event EventHandler DeleteButtomHandlerMPresentor = null;
 
+        public event EventHandler ExcelButtomHandlerMPresentor = null;
+
         public PresentorMain(MetroViewMain view)
         {
             this._view = view;
             _context = new ApplicationContext();
             z80 = _view.Z80Navigation;
-            z80.SelectedItem += new Z80NavBarControl.Z80_Navigation.SelectedItemEventHandler(NavigationBarSelectedItem);
+            z80.SelectedItem += NavigationBarSelectedItem;
             //определяем события кнопок
-            _view.AddButtonClicked+=new EventHandler(AddButtonClickedMainPresentor);
-            _view.EditButtonClicked+=new EventHandler(EditButtonClickedMainPresentor);
-            _view.DeleteButtonClicked += new EventHandler(DeleteButtonClickedMainPresentor);
+            _view.AddButtonClicked+=AddButtonClickedMainPresentor;
+            _view.EditButtonClicked+=EditButtonClickedMainPresentor;
+            _view.DeleteButtonClicked += DeleteButtonClickedMainPresentor;
+
+            _view.ExcelButtonClicked += ExcelButtonClickedMainPresentor;
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+
         }
 
         public void ShowView()
@@ -39,20 +46,28 @@ namespace XFace.Presentors
         private void NavigationBarSelectedItem(NavBarItem Item)
         {
             RemoveAllTabPages();
-
+            DropAllEvents();
             switch (Item.ID)
             {
-               
+
                 case 500:
+                {
+                
                     _view.MainMetroTabControl.TabPages.Add(_view.TabPage_4);
                     presentorUnit = new PresentorUnit();
-                   
+
                     presentorUnit.AddPanelOnTab(_view.TabPage_4);
+
                     this.AddButtomHandlerMPresentor += presentorUnit.ShowUnitView;
-                    this.EditButtomHandlerMPresentor+=presentorUnit.ShowUnitView;
+                    this.EditButtomHandlerMPresentor += presentorUnit.ShowUnitView;
                     this.DeleteButtomHandlerMPresentor += presentorUnit.DelCell;
+
+                    this.ExcelButtomHandlerMPresentor += presentorUnit.ExcelLoad;
+
+
                     break;
-            }
+                }
+        }
         }
 
         private void RemoveAllTabPages()
@@ -65,18 +80,37 @@ namespace XFace.Presentors
 
         private void AddButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            AddButtomHandlerMPresentor(sender,e);
-            
+            AddButtomHandlerMPresentor?.Invoke(sender, e);
         }
 
         private void EditButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            EditButtomHandlerMPresentor(sender,e);
+            EditButtomHandlerMPresentor?.Invoke(sender, e);
         }
 
         private void DeleteButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            DeleteButtomHandlerMPresentor(sender,e);
+            DeleteButtomHandlerMPresentor?.Invoke(sender,e);
         }
+
+        private void ExcelButtonClickedMainPresentor(object sender, EventArgs e)
+        {
+            ExcelButtomHandlerMPresentor?.Invoke(sender, e);
+        }
+
+        private void DropAllEvents()
+        {
+            if (AddButtomHandlerMPresentor!=null)
+                this.AddButtomHandlerMPresentor -= presentorUnit.ShowUnitView;
+            if (EditButtomHandlerMPresentor != null)
+                this.EditButtomHandlerMPresentor -= presentorUnit.ShowUnitView;
+            if (DeleteButtomHandlerMPresentor != null)
+                this.DeleteButtomHandlerMPresentor -= presentorUnit.DelCell;
+            if (ExcelButtomHandlerMPresentor != null)
+                this.ExcelButtomHandlerMPresentor -= presentorUnit.ExcelLoad;
+            if (presentorUnit != null)
+                presentorUnit = null;
+        }
+
     }
 }
