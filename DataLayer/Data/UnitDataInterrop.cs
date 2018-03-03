@@ -69,5 +69,17 @@ namespace DataLayer.Data
             return id;
 
         }
+
+        public void DeleteUnit(Unit unit)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Delete(unit);
+                    transaction.Commit();
+                }
+            }
+        }
     }
 }

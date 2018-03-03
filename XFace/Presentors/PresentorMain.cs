@@ -48,9 +48,9 @@ namespace XFace.Presentors
                     presentorUnit = new PresentorUnit();
                    
                     presentorUnit.AddPanelOnTab(_view.TabPage_4);
-                    this.AddButtomHandlerMPresentor += new EventHandler(presentorUnit.ShowUnitView);
-                    this.EditButtomHandlerMPresentor+=new EventHandler(presentorUnit.ShowUnitView);
-
+                    this.AddButtomHandlerMPresentor += presentorUnit.ShowUnitView;
+                    this.EditButtomHandlerMPresentor+=presentorUnit.ShowUnitView;
+                    this.DeleteButtomHandlerMPresentor += presentorUnit.DelCell;
                     break;
             }
         }
@@ -65,18 +65,18 @@ namespace XFace.Presentors
 
         private void AddButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            AddButtomHandlerMPresentor.Invoke(sender,e);
+            AddButtomHandlerMPresentor(sender,e);
             
         }
 
         private void EditButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            EditButtomHandlerMPresentor.Invoke(sender,e);
+            EditButtomHandlerMPresentor(sender,e);
         }
 
         private void DeleteButtonClickedMainPresentor(object sender, System.EventArgs e)
         {
-            DeleteButtomHandlerMPresentor.Invoke(sender,e);
+            DeleteButtomHandlerMPresentor(sender,e);
         }
     }
 }

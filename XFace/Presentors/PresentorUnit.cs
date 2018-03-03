@@ -52,7 +52,7 @@ namespace XFace.Presentors
                     udi.UpdateUnit(unit);
                 }
             }
-            //событие удалить
+            //событие добавить
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 foreach (Unit unit in e.NewItems)
@@ -60,6 +60,7 @@ namespace XFace.Presentors
                     metroGrid.Rows[metroGrid.RowCount - 1].Cells[0].Value = udi.AddUnit(unit);
                 }
             }
+         
         }
 
 
@@ -124,7 +125,7 @@ namespace XFace.Presentors
 
             if (sender.GetType().GetProperties()[39].GetValue(sender, null).ToString() == "btnAdd")
             {
-                _viewUnit.ButtonOkClicked += new EventHandler(AddCell);
+                _viewUnit.ButtonOkClicked += AddCell;
             }
             else if (sender.GetType().GetProperties()[39].GetValue(sender, null).ToString()=="btnEdit")
             {
@@ -132,13 +133,14 @@ namespace XFace.Presentors
                 _viewUnit.TextBoxUnitName = metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[1].Value.ToString();
                 _viewUnit.TextBoxUnitShortName = metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[2].Value.ToString();
 
-                _viewUnit.ButtonOkClicked += new EventHandler(EditCurrentCell);
+                _viewUnit.ButtonOkClicked += EditCurrentCell;
             }
 
-
+         
             _viewUnit.ShowDialog();
         }
 
+        
 
         //сохраняет редактирование данных текущей строки
         private void EditCurrentCell(object sender, EventArgs e)
@@ -151,11 +153,9 @@ namespace XFace.Presentors
                 {
                     if (unit.Id == (int) metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[0].Value)
                     {
-                        //ocUnits.RemoveAt(ocUnits.IndexOf(unit));
                         unit.Id = (int) metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[0].Value;
                         unit.FullName = _viewUnit.TextBoxUnitName;
                         unit.ShortName = _viewUnit.TextBoxUnitShortName;
-                        //ocUnits.Add(unit);
                         ocUnits[ocUnits.IndexOf(unit)] = unit;
                         metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[1].Value = unit.FullName;
                         metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[2].Value = unit.ShortName;
@@ -164,7 +164,7 @@ namespace XFace.Presentors
                 }
             }
           
-            _viewUnit.ButtonOkClicked -= new EventHandler(EditCurrentCell);
+            _viewUnit.ButtonOkClicked -= EditCurrentCell;
             _viewUnit.Close();
         }
 
@@ -183,7 +183,30 @@ namespace XFace.Presentors
             ocUnits.Add(unit);
         
             _viewUnit.ButtonOkClicked -= new EventHandler(AddCell);
+            //программно выделяем новую строку и делаем ее текущей
+            metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Selected = false;
+            metroGrid.Rows[metroGrid.RowCount - 1].Selected = true;
+            metroGrid.CurrentCell= metroGrid.Rows[metroGrid.RowCount - 1].Cells[0];
+            /////////////////////////////////////////////////////////////////////////
             _viewUnit.Close();
         }
+
+        //удалить из бд строку
+        public void DelCell(object sender, EventArgs e)
+        {
+            foreach (Unit unit in ocUnits)
+            {
+                if (unit.Id == (int) metroGrid.Rows[metroGrid.CurrentCell.RowIndex].Cells[0].Value)
+                {
+                    ocUnits.Remove(unit);
+                    udi.DeleteUnit(unit);
+                    break;
+                }
+
+            }
+           
+           metroGrid.Rows.RemoveAt(metroGrid.CurrentCell.RowIndex);
+        }
+
     }
 }
