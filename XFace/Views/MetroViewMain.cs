@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -17,6 +18,13 @@ namespace XFace.Views
     public partial class MetroViewMain : MetroForm
     {
         private NavBarItem nvBarItem = new NavBarItem();
+
+        //событие которое уведомит главный презентер, что нажали кнопки
+        public event EventHandler AddButtonClicked = null;
+        public event EventHandler EditButtonClicked = null;
+        public event EventHandler DeleteButtonClicked = null;
+      
+
 
         public MetroViewMain()
         {
@@ -55,17 +63,10 @@ namespace XFace.Views
             this.metroTabControl.TabPages.Remove(this.tabPage2);
             this.metroTabControl.TabPages.Remove(this.tabPage3);
             this.metroTabControl.TabPages.Remove(this.tabPage4);
-        }
-        
-        private void Form1_Load(object sender, System.EventArgs e)
-        {
-            metroButton4.Hide();
-        }
 
-        private void metroButton1_Click(object sender, System.EventArgs e)
-        {
-            metroButton4.Select();
+           
         }
+ 
         
         public TabPage TabPage_1
         {
@@ -96,14 +97,24 @@ namespace XFace.Views
             get { return metroTabControl; }
         }
 
-        private void metroButton3_Click(object sender, System.EventArgs e)
-        {
-            metroButton4.Select();
-        }
-
         public Z80_Navigation Z80Navigation
         {
             get { return this.z80_Navigation1; }
+        }
+
+        private void btnAdd_Click(object sender, System.EventArgs e)
+        {
+            AddButtonClicked.Invoke(sender,e);   
+        }
+
+        private void btnEdit_Click(object sender, System.EventArgs e)
+        {
+            EditButtonClicked.Invoke(sender,e);
+        }
+
+        private void btnDelete_Click(object sender, System.EventArgs e)
+        {
+            DeleteButtonClicked.Invoke(sender,e);
         }
     }
     

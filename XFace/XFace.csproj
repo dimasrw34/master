@@ -77,6 +77,12 @@
     <Compile Include="PanelBuilders\BuiderPanelAndOneGrid.cs" />
     <Compile Include="Presentors\PresentorMain.cs" />
     <Compile Include="Presentors\PresentorUnit.cs" />
+    <Compile Include="Views\UnitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UnitView.Designer.cs">
+      <DependentUpon>UnitView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MetroViewMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\UnitView.resx">
+      <DependentUpon>UnitView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MetroViewMain.resx">
       <DependentUpon>MetroViewMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <None Include="Resources\ic_delete_sweep_white_36dp.png" />
+    <None Include="Resources\ic_create_white_36dp.png" />
+    <None Include="Resources\ic_add_white_36dp.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">

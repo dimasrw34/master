@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 using BusinessLayer;
 using FluentNHibernate.Testing.Values;
 using FluentNHibernate.Visitors;
+using NHibernate;
 
 namespace DataLayer.Data
 {
     public class UnitDataInterrop
     {
-
+        
         //заполняет справочник (коллекцию) единиц измерения  из БД и возвращает его
         public ObservableCollection<Unit> GetUnits()
         {
-            ObservableCollection<Unit> unitList;
+           ObservableCollection<Unit> unitList;
 
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -38,6 +39,35 @@ namespace DataLayer.Data
             return unitList;
         }
 
+        //обновляет данные единицы измерния
+        public void UpdateUnit(Unit unit)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction =session.BeginTransaction())
+                {
+                        session.Update(unit);
+                        transaction.Commit();
+                }
+            }
+        }
 
+        public int AddUnit(Unit unit)
+        {
+            int id;
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    id=(int)session.Save(unit);
+
+                    transaction.Commit();
+                }
+            }
+
+            return id;
+
+        }
     }
 }

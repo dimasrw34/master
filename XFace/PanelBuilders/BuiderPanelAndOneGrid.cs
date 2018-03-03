@@ -95,6 +95,7 @@ namespace XFace
             metroGrid.Size = new System.Drawing.Size(275, 163);
             metroGrid.TabIndex = 0;
             metroGrid.Theme = MetroFramework.MetroThemeStyle.Light;
+            
 
 
             ((System.ComponentModel.ISupportInitialize)(metroGrid)).EndInit();
